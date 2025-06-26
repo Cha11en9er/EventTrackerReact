@@ -1,0 +1,39 @@
+        <form onSubmit={onLoginSubmit}>
+          <div>
+            <input
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              placeholder="Enter your username"
+              required
+              style={{ padding: '10px', width: '250px', marginBottom: '10px' }}
+            />
+          </div>
+          <button type="submit" style={{ padding: '10px 20px' }}>
+            Login
+          </button>
+        </form>
+        {error && <p style={{ color: 'red' }}>{error}</p>}
+
+
+// Receive handleLogin from App.jsx as a prop
+function LoginPage({ handleLogin }) {
+  const [username, setUsername] = useState('');
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
+
+  const onLoginSubmit = async (e) => {
+    e.preventDefault(); // Prevent default form submission
+    setError(''); // Clear previous errors
+
+    try {
+      // The handleLogin function will make the API call and set the user state
+      await handleLogin(username);
+      // If login is successful, navigate to the info page
+      navigate('/info');
+    } catch (err) {
+      // If login fails, display an error message
+      setError('Invalid username. Please try again.');
+      console.error('Login failed:', err);
+    }
+  };

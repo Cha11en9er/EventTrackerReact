@@ -1,0 +1,25 @@
+.LoginCard {
+    width: 300px;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.LoginCard:hover {
+    background: rgba(255, 255, 255, 0.9);
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(25, 118, 210, 0.2);
+}
+
+.LoginCard h4 {
+    color: #1976d2;
+    margin-bottom: 0.5rem;
+}
+
+.LoginCard p {
+    color: #666;
+    margin: 0;
+    font-size: 0.9rem;
+}

@@ -1,0 +1,21 @@
+.LoginButton {
+    padding: 0.8rem 2rem;
+    min-width: 160px;
+    font-size: 1.1rem;
+    color: #1976d2;
+    background: transparent;
+    border: 2px solid #1976d2;
+    border-radius: 25px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.LoginButton:hover {
+    background: #1976d2;
+    color: white;
+    transform: translateY(-2px);
+}

@@ -1,0 +1,45 @@
+/* src/components/Header.css */
+
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: #242424;
+    color: white;
+    font-family: sans-serif;
+  }
+  
+  .header-left,
+  .header-center,
+  .header-right {
+    flex: 1;
+  }
+  
+  .header-left {
+    text-align: left;
+  }
+  
+  .header-center {
+    text-align: center;
+  }
+  
+  .header-right {
+    text-align: right;
+  }
+  
+  .logout-button {
+    background-color: #646cff;
+    color: white;
+    border: none;
+    padding: 0.6em 1.2em;
+    font-size: 1em;
+    font-weight: 500;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: border-color 0.25s;
+  }
+  
+  .logout-button:hover {
+    border-color: #646cff;
+  }

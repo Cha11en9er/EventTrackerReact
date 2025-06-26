@@ -1,0 +1,89 @@
+.LoginPage {
+    display: flex;
+    width: 100%;
+    max-width: 100%;
+    min-height: 100vh; 
+    align-items: center;
+    justify-content: center;
+    gap: 4rem;
+  }
+
+.LoginInformation {
+  position: relative;
+  width: 800px;
+  height: 800px;
+  flex-shrink: 0;
+}
+
+.LogoImage {
+  position: absolute; /* Position logo absolutely within LoginInformation */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Centering trick */
+  width: 200px;
+  height: 200px;
+  z-index: 2; /* Ensure logo is above cards if they overlap */
+  /* Remove margin-bottom from here, it's not needed for absolute positioning */
+}
+
+/* Common positioning for all cards */
+.LoginCard {
+  position: absolute; /* Take cards out of the normal document flow */
+  width: 300px; /* As per your LoginCard.css */
+  box-sizing: border-box; /* Ensures padding is included in the width */
+  text-align: center; /* Center text content inside cards if desired */
+  /* Add other common styles like background, border-radius, transition from LoginCard.css here or keep in LoginCard.css */
+}
+
+/* Specific positioning for each card */
+.card-top {
+  /* Positions the card above the logo */
+  top: 100px; /* Adjusted to place the card's bottom edge about 20px above logo's top edge */
+  left: 50%;
+  transform: translateX(-50%); /* Center horizontally */
+}
+
+.card-left {
+  /* Positions the card to the left of the logo */
+  left: -20px; /* Adjusted to place the card's right edge about 20px left of logo's left edge. This will extend slightly beyond the 800px width of .LoginInformation. */
+  top: 50%;
+  transform: translateY(-50%); /* Center vertically */
+}
+
+.card-right {
+  /* Positions the card to the right of the logo */
+  left: 520px; /* Adjusted to place the card's left edge about 20px right of logo's right edge. This will extend slightly beyond the 800px width of .LoginInformation. */
+  top: 50%;
+  transform: translateY(-50%); /* Center vertically */
+}
+
+.card-bottom {
+  /* Positions the card below the logo */
+  top: 520px; /* Adjusted to place the card's top edge about 20px below logo's bottom edge */
+  left: 50%;
+  transform: translateX(-50%); /* Center horizontally */
+}
+
+.LoginForm {
+  flex: 1;
+  text-align: center;
+  padding: 2rem;
+}
+
+.LoginFormTitle {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: #1976d2;
+}
+
+.LoginFormSubtitle {
+  font-size: 1.2rem;
+  color: #666;
+  margin: 0 auto 2rem;
+}
+
+.LoginFormButtons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}

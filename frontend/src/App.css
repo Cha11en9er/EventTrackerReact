@@ -1,0 +1,38 @@
+#root {
+  max-width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background: linear-gradient(90deg, #ffffff 0%, #e3f2fd 100%);
+  font-family: Arial, sans-serif;
+}
+
+/*
+  This new class makes the whole app take up the full screen height
+  and organizes the header and main content in a column.
+*/
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/*
+  This modified class now does three things:
+  1. `flex-grow: 1;`       -> Tells it to fill all available vertical space below the header.
+  2. `display: flex;`       -> Makes it a flex container to control its children.
+  3. The next three lines -> Center the content (like your H1 and button) perfectly
+                             in the middle of the available space.
+*/
+.page-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
