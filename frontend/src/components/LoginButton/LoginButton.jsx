@@ -1,7 +1,9 @@
 import './LoginButton.css';
 
-export default function LoginButton({ ButtonText }) {
+export default function LoginButton({ ButtonText, onClick }) {
     return (
-        <a href="" className="LoginButton">{ButtonText}</a>
+        <button onClick={onClick} className="LoginButton">
+            {ButtonText}
+        </button>
     );
 }

@@ -7,8 +7,9 @@ import {
   Navigate,
 } from 'react-router-dom';
 import Header from './components/Header';
-import LoginPage from './pages/LoginPage/LoginPage'; // Renamed import
-import InfoPage from './pages/InfoPage';
+import IntroPage from './pages/IntroPage/IntroPage';
+import AuthPage from './pages/AuthPage/AuthPage';
+import SchedulePage from './pages/SchedulePage/SchedulePage';
 import './App.css';
 import axios from 'axios';
 
@@ -54,6 +55,14 @@ function App() {
     setCurrentUser(response.data.username);
   };
 
+  const handleRegister = async (username, password) => {
+    const response = await axios.post('http://127.0.0.1:8000/api/register', {
+      username: username,
+      password: password,
+    });
+    setCurrentUser(response.data.username);
+  };
+
   // Function to handle user logout
   const handleLogout = () => {
     setCurrentUser(null); // Clear the user state
@@ -70,15 +79,19 @@ function App() {
           <Routes>
             <Route
               path="/"
-              element={<LoginPage handleLogin={handleLogin} />}
+              element={<IntroPage handleLogin={handleLogin} />}
             />
             <Route
-              path="/info"
-              element={
-                <ProtectedRoute currentUser={currentUser}>
-                  <InfoPage />
-                </ProtectedRoute>
-              }
+              path="/login"
+              element={<AuthPage handleLogin={handleLogin} />}
+            />
+            <Route
+              path="/register"
+              element={<AuthPage handleRegister={handleRegister} />}
+            />
+            <Route
+              path="/schedule"
+              element={<SchedulePage />}
             />
           </Routes>
         </main>

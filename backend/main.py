@@ -5,9 +5,9 @@ from pydantic import BaseModel # Import BaseModel
 
 app = FastAPI()
 
-DB_NAME = "EventTrackerDB"
+DB_NAME = ""
 DB_USER = "postgres"
-DB_PASS = "OORCra23ppo)"
+DB_PASS = ""
 DB_HOST = "localhost"
 DB_PORT = "5432"
 
@@ -24,6 +24,10 @@ def get_db_connection():
 # Pydantic model to define the shape of the login request JSON
 class UserLogin(BaseModel):
     username: str
+
+class UserRegister(BaseModel):
+    username: str
+    password: str
 
 origins = [
     "http://localhost:5173",
@@ -60,24 +64,25 @@ async def login(user_login: UserLogin):
         # If user is not found, raise an HTTP 401 Unauthorized error
         raise HTTPException(status_code=401, detail="Invalid username")
 
+@app.post("/api/register")
+async def register(user_register: UserRegister):
 
-@app.get("/api/data")
-async def get_data():
-    """
-    This endpoint connects to the PostgreSQL database,
-    queries the 'events' table, and returns the data.
-    """
     conn = get_db_connection()
     cur = conn.cursor()
-    cur.execute("SELECT name FROM evt.events;")
+    cur.execute("INSERT INTO evt.user (user_id, fullname, username, password, email, telegram_id) VALUES (default, 'ReactUser', %s, %s, 'reactuser@gmail.com', 1234567890);", (user_register.username, user_register.password))
+    conn.commit()
+    cur.close()
+    conn.close()
+
+    return {"username": user_register.username}
+
+@app.get("/api/schedule_data")
+async def get_schedule_data():
+    conn = get_db_connection()
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM evt.event;")
     query_results = cur.fetchall()
     cur.close()
     conn.close()
 
-    items = [item[0] for item in query_results]
-    print(items)
-    data = {
-        "title": "Information from PostgreSQL",
-        "items": items
-    }
-    return data
+    return query_results
